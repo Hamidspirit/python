@@ -1,0 +1,36 @@
+Book_api 
+making a simple api that 
+* users can add delete update their data (crude)
+* json api response, request
+
+1- first users can register 
+2- upon register each user gets assigend a token 
+3- token will be stored on user's machine 
+4- each subsequent request that requires authentication can be done with token
+
+!! currently tokens do not have refresh function
+!! if token is not saved there is no way of way to authenticate that user
+
+
+api enspoints design :
+    register endpoint ---> 
+        - takes username 
+        - takes password
+        - returns message
+        - returns access_token if successful
+
+    login endpoint ---> Refresh the token 
+        -
+
+    add_book endpoint ---> 
+        -
+
+    delete_book endpoint --->
+        -
+    
+    user endpoint ---> Check if user exists
+        - takes JWT 
+        - returns message
+        - returns user
+
+    
