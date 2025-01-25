@@ -2,35 +2,69 @@ Book_api
 making a simple api that 
 * users can add delete update their data (crude)
 * json api response, request
+* JWT for authentication
+* support multiple frontends e.g(website, mobile, api only)
 
 1- first users can register 
 2- upon register each user gets assigend a token 
 3- token will be stored on user's machine 
 4- each subsequent request that requires authentication can be done with token
 
-!! currently tokens do not have refresh function
+!! security : no SameSite restriction, no httpOnly, 
 !! if token is not saved there is no way of way to authenticate that user
+!! refresh_token does not have function to refresh
+!! no api versioning
+!! code is all in one file
+!! not good error handling
 
 
 api enspoints design :
-    register endpoint ---> 
+    register endpoint ---> (POST)
         - takes username 
         - takes password
-        - returns message
-        - returns access_token if successful
+        - returns msg
+        - returns access_token if successful in header Authorization and stored in cookies
+        - returns refresh_token in cookies 
 
-    login endpoint ---> Refresh the token 
-        -
+    refresh endpoint ---> issue new tokens when expired if refresh token available (POST)
+        - request to issue new token 
+        - return access_token
 
-    add_book endpoint ---> 
-        -
+    add_book endpoint ---> adds books to database, save book_id (POST)
+        - takes author
+        - takes title
+        - takes user_id
+        - returns msg
+        response example :
+        {
+            "book": {
+                "author": "J.K. Rowling",
+                "id": 1,
+                "title": "Harry Potter and the Philosopher's Stone"
+            },
+            "msg": "book added successfully"
+        }
 
-    delete_book endpoint --->
-        -
+    delete endpoint ---> deletes a book from database (DELETE)
+        - takes title
+        - returns success message 
+
+    update/<int:book_id> ---> requires book_id , title or author can be updated (PUT)
+        - takes title 
+        - takes author 
+        - reurns msg 
+        - returns new book information
+
+    get_book ---> access books in database with title or 
+                search by author to get all the books by author or send empty request to get all books
+                sending both author and title brings that specific book back
+        - takes title (optional)
+        - takes author (optional)
+        - returns book or books 
     
-    user endpoint ---> Check if user exists
+    user endpoint ---> Check if user exists (GET)
         - takes JWT 
-        - returns message
+        - returns msg
         - returns user
 
     
