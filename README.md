@@ -2,4 +2,5 @@
 I will make example projects in this repository to learn diffrent aspects of python.
 
 ## Book API
--> currently collects information the book you have
+This API uses JWT Token for authentication , and sql alchemy to manage the database.
+Support for different clients e.g(website, mobile, ...)  
