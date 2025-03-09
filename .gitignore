@@ -1,3 +1,7 @@
+.virt
 .venv
 instance
 *.db    
+simple-compiler
+__pycache__
+

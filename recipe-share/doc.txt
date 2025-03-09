@@ -1,0 +1,30 @@
+Recipe sharing API
+
+this is JSON api request should be made with json format
+
+endpoints:
+    - register -> methods[POST]
+        username: a unique username
+        email: users email
+        password: users password
+        returns a token in response and sets access_token in cookies
+    
+    - login -> methods[POST]
+        in this endpoint user gets verified to get new access_token
+        username: user name
+        password: password
+
+    - recipe  -> methods[POST, GET]
+       this endpoint will let you add a recipe or get all your own recipe
+        - username
+        - user_id 
+        - title  
+        - content 
+        - tags (optional)
+        - shared 0 means private and 1 means public
+
+    - recipe/<recipe_id> -> methods[GET]
+        get specific recipe by id
+
+    - public_recipe -> methods[GET]
+        get all the public recipe
